@@ -1,4 +1,6 @@
 export interface Superhero {
-  id: number
+  id: string
   name: string
+  description: string
+  img: string
 }

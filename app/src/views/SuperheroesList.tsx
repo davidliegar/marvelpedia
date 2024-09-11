@@ -2,6 +2,7 @@ import { superheroes } from '@marvelpedia/core'
 
 import { useAppDispatch, useAppSelector } from '@/app/hooks'
 import { useEffect } from 'react'
+import Superhero from '@/components/SuperHero'
 
 export const SuperheroesList = () => {
   const dispatch = useAppDispatch()
@@ -15,14 +16,11 @@ export const SuperheroesList = () => {
   }, [superheroesStatus, dispatch])
 
   const renderedHeroes = superheroesSelector.map(superheroe => (
-    <article className="post-excerpt" key={superheroe.name}>
-      <h3>{superheroe.name}</h3>
-    </article>
+    <Superhero hero={superheroe} key={superheroe.id} />
   ))
 
   return (
-    <section className="posts-list">
-      <h2>Posts</h2>
+    <section className='grid grid-cols-3 gap-4'>
       {renderedHeroes}
     </section>
   )

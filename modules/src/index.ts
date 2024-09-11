@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import superheroeReducer, { fetchAll, selectAll, selectError, selectStatus } from './superhero/presentation'
+export * from './superhero/domain/superhero'
 
 export const store = configureStore({
   reducer: {

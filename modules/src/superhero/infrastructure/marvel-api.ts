@@ -21,8 +21,10 @@ export function marvelSuperheroRepositoryBuilder({
       })
         
       return superheroes.data.results.map(hero => ({
-        id: hero.id,
-        name: hero.name
+        id: hero.id.toString(),
+        name: hero.name,
+        description: hero.description || '(No description available)',
+        img: `${hero.thumbnail.path}/portrait_xlarge.${hero.thumbnail.extension}`
       }))
     },
   }

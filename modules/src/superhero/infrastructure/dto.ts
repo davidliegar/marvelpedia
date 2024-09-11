@@ -1,7 +1,11 @@
 interface Hero {
   id: number
   name: string
-  description: string
+  description?: string
+  thumbnail: {
+    extension: string
+    path: string
+  }
 }
 
 export interface MarvelGetAll {
