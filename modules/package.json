@@ -1,0 +1,13 @@
+{
+  "name": "@marvelpedia/core",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+      ".": "./src/index.ts"
+  },
+  "collaborators": [
+    "David Liébana"
+  ],
+  "description": "marvelpedia core has all the business logic and information that can be used along the apps"
+}

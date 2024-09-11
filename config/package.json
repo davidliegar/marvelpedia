@@ -1,0 +1,11 @@
+{
+  "name": "@marvelpedia/config",
+  "type": "module",
+  "collaborators": [
+    "David Liébana"
+  ],
+  "description": "marvelpedia config has all the config that is shared between the projects",
+  "devDependencies": {
+    "envalid": "8.0.0"
+  }
+}
