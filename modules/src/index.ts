@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import superheroeReducer, { fetchAll, selectAll, selectError, selectStatus } from './superhero/presentation'
+import superheroeReducer, { fetchAll, incrementPage, selectAll, selectError, selectStatus } from './superhero/presentation'
 export * from './superhero/domain/superhero'
 
 export const store = configureStore({
@@ -14,6 +14,8 @@ export type RootState = ReturnType<typeof store.getState>
 
 export const superheroes = {
   fetchAll,
+  incrementPage,
+
   selectAll,
   selectError,
   selectStatus
