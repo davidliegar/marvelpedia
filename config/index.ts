@@ -7,6 +7,7 @@ export interface EnvironmentVariables {
   API_URL: string
   DEV_MODE: boolean
   ANALYTICS_SERVICE: 'debug'
+  API_KEY: string
 }
 
 export const env: EnvironmentVariables = cleanEnv(variables, {
@@ -18,6 +19,7 @@ export const env: EnvironmentVariables = cleanEnv(variables, {
   ANALYTICS_SERVICE: str({
     choices: ['debug']
   }),
+  API_KEY: str()
 }) as EnvironmentVariables
 
 if (env.DEV_MODE) {

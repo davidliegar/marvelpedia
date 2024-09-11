@@ -1,13 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
+import { store } from '@marvelpedia/core'
+
 import App from './App.tsx'
 import './index.css'
-import InjectProvider from './injects/index.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <InjectProvider>
+    <Provider store={store}>
       <App />
-    </InjectProvider>
+    </Provider>
   </StrictMode>,
 )

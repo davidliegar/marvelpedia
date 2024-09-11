@@ -1,8 +1,19 @@
-import { findAll } from './superhero/application'
-export * from './superhero/domain/superhero'
+import { configureStore } from '@reduxjs/toolkit'
+import superheroeReducer, { fetchAll, selectAll, selectError, selectStatus } from './superhero/presentation'
 
-export function provideSuperheroUseCases() {
-  return {
-    findAll
+export const store = configureStore({
+  reducer: {
+    superheroes: superheroeReducer
   }
+})
+
+export type AppStore = typeof store
+export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>
+
+export const superheroes = {
+  fetchAll,
+  selectAll,
+  selectError,
+  selectStatus
 }
