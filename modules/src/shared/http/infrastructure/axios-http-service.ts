@@ -6,7 +6,7 @@ import { ForbiddenError } from '../domain/forbidden-error'
 const HTTP_STATUS_FORBIDDEN = 403
 const HTTP_STATUS_NOT_FOUND = 404
 
-function errorHandle (error) {
+function errorHandle (error: { response: { status: string | undefined | number}}) {
   if (error.response?.status === HTTP_STATUS_NOT_FOUND) {
     throw new NotFoundError('')
   } else if (error.response?.status === HTTP_STATUS_FORBIDDEN) {

@@ -1,13 +1,12 @@
-import { SuperheroesList } from '@/views/SuperheroesList.tsx'
-import InputSearch from './components/InputSearch'
+import SuperheroesList from '@/components/SuperheroesList.tsx'
+import InputSearch from '../components/InputSearch'
 
 import { useAppDispatch, useAppSelector } from '@/app/reduxHooks'
 import { useEffect, useState } from 'react'
 import useInfiniteScroll from '@/app/useInfiniteScroll'
 import { superheroes } from '@marvelpedia/core'
-import LoadingHero from './components/loadingHero'
 
-function App() {
+function SuperheroesView() {
   const dispatch = useAppDispatch()
 
   const superheroesStatus = useAppSelector(superheroes.selectStatus)
@@ -45,7 +44,7 @@ function App() {
       <div className='w-11/12 max-w-screen-lg mx-auto'>
         <header className='sticky top-0 bg-gray-200 py-4 lg:mt-20'>
           <h2 className='text-neutral-700 font-bold text-4xl mb-8'>Search your character</h2>
-          <InputSearch placeholder='Name of Character' onSearch={onSearch} />
+          <InputSearch className="w-full sm:w-2/3 lg:w-1/2" placeholder='Name of Character' onSearch={onSearch} />
         </header>
 
         <SuperheroesList loading={superheroesStatus === 'loading'}/>
@@ -58,4 +57,4 @@ function App() {
   )
 }
 
-export default App
+export default SuperheroesView

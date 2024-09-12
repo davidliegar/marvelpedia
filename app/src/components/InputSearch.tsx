@@ -20,7 +20,7 @@ function InputSearch({ placeholder, onSearch, className }: InputSearchProps & { 
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="border border-gray-300 rounded-l px-4 py-2 h-10 focus:outline-none"
+        className="border border-gray-300 rounded-l px-4 py-2 h-10 focus:outline-none w-full"
         placeholder={placeholder}
       />
 

@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.masking {
+  --c: #ae0b0b;
+  width: 200px;
+  aspect-ratio: 1;
+  background:
+   radial-gradient(at 70% 31%,var(--c) 29%,#a2090900 30%),
+   radial-gradient(at 30% 31%,var(--c) 29%,#0000 30%),
+   linear-gradient(var(--c) 0 0) bottom/100% 50% no-repeat;
+  clip-path: polygon(-43% 0,50% 91%, 143% 0);
+  animation: scale 1000ms alternate infinite ease-in;
+
+  & img {
+    clip-path: polygon(-42% 0,50% 91%, 142% 0);
+  }
+}
+
+@keyframes scale {
+  0%   {transform: scale(1);}
+  100% {transform: scale(1.1);}
+}
