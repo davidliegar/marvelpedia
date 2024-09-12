@@ -1,8 +1,9 @@
 import { useAppSelector } from "@/app/reduxHooks"
-import LoadingHero from "@/components/LoadingHero"
-import Superhero from "@/components/Superhero"
+import LoadingHero from "@/components/loadingHero"
+import Superhero from "@/components/superhero"
 import { superheroes } from "@marvelpedia/core"
 import noResultsImg from '@/assets/deadpool-ops.png';
+import { EmptyState, StyledMasking, StyledList, StyledMaskImg, StyledDescription } from "./styles";
 
 const SuperheroesList = ({ loading = false }) => {
   const superheroesSelector = useAppSelector(superheroes.selectAll)
@@ -17,16 +18,16 @@ const SuperheroesList = ({ loading = false }) => {
     renderedHeroes.push(<LoadingHero key="loading" />)
   }
 
-  const list = <section className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+  const list = <StyledList>
     {renderedHeroes}
-  </section>
+  </StyledList>
 
-  const empty = <div className="flex items-center flex-col w-full sm:w-52">
-    <div className="masking">
-      <img src={noResultsImg} alt="no result" />
-    </div>
-    <p className="text-center">Ops, we couldn't find your superhero, try with another name</p>
-  </div>
+  const empty = <EmptyState>
+    <StyledMasking>
+      <StyledMaskImg src={noResultsImg} alt="no result" />
+    </StyledMasking>
+    <StyledDescription>Ops, we couldn't find your superhero, try with another name</StyledDescription>
+  </EmptyState>
 
   return (
     hasContent ? list : empty

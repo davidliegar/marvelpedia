@@ -125,7 +125,7 @@ The app is a simple React application using React Router in case we want to expa
 It has been decided to implement infinite scroll instead of a button for a better user experience (in my opinion). 
 For the loading state, a skeleton card has been implemented instead of a spinner for the same reason.
 
-The styling has been done using Tailwind CSS, taking care of creating a mobile first application.
+The styling has been done using Styled Components, taking care of creating a mobile first application.
 
 > [!NOTE]  
 > Seems that the external link button are all returning 404 error

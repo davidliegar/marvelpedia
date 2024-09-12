@@ -1,0 +1,54 @@
+@import 'reset-css';
+
+:root {
+  --white: #fff;
+  --grey-200: #e5e7eb;
+  --grey-300: #d1d5db;
+  --grey-500: #a3a7ac;
+  --grey-700: #404040;
+
+  --stone-200: #e2e8f0;
+  --stone-600: #525252;
+  --stone-700:#44403c;
+  --stone-900: #1c1917;
+
+  --size-2: 0.5rem;
+  --size-4: 1rem;
+
+  --radius-sm: 0.25rem;
+
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #ae0b0b;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--grey-200);
+  margin: 0;
+  line-height: inherit;
+}
+
+*, :before, :after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--grey-200);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Button from '../Button'
+import Button from '../button'
 import { describe, it, expect, vi } from 'vitest';
 
 describe('Button component', () => {
@@ -9,8 +9,6 @@ describe('Button component', () => {
     const buttonElement = screen.getByRole('button', { name: /click me/i });
 
     expect(buttonElement).toBeInTheDocument();
-    expect(buttonElement).toHaveClass('custom-class');
-    expect(buttonElement).toHaveClass('bg-stone-700');
   });
 
   it('renders a link when "to" prop is provided', () => {

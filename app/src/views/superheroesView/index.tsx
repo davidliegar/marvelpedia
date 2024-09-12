@@ -1,10 +1,11 @@
-import SuperheroesList from '@/components/SuperheroesList.tsx'
-import InputSearch from '../components/InputSearch'
+import SuperheroesList from '@/components/superheroesList'
+import InputSearch from '../../components/inputSearch'
 
 import { useAppDispatch, useAppSelector } from '@/app/reduxHooks'
 import { useEffect, useState } from 'react'
 import useInfiniteScroll from '@/app/useInfiniteScroll'
 import { superheroes } from '@marvelpedia/core'
+import { StyledError, StyledFooter, StyledHeader, StyledSuperheroView, StyledTitle } from './styles'
 
 function SuperheroesView() {
   const dispatch = useAppDispatch()
@@ -40,28 +41,26 @@ function SuperheroesView() {
   }, [superheroesMeta])
 
   return (
-    <>
-      <div className='w-11/12 max-w-screen-lg mx-auto'>
-        <header className='sticky top-0 bg-gray-200 py-4 lg:mt-20'>
-          <h2 className='text-neutral-700 font-bold text-4xl mb-8'>Search your character</h2>
-          <InputSearch
-            className="w-full sm:w-2/3 lg:w-1/2"
-            placeholder='Name of Character'
-            onSearch={onSearch}
-            disabled={superheroesStatus === 'loading'}
-          />
-        </header>
+    <StyledSuperheroView>
+      <StyledHeader>
+        <StyledTitle>Search your character</StyledTitle>
+        <InputSearch
+          placeholder='Name of Character'
+          className='search-input'
+          onSearch={onSearch}
+          disabled={superheroesStatus === 'loading'}
+        />
+      </StyledHeader>
 
-        {superheroesStatus === 'rejected'
-          ? <p className="p-3 bg-red-700 text-white">Seems that is a problem with your api key</p>
-          : <SuperheroesList loading={superheroesStatus === 'loading' || superheroesStatus === 'idle'}/>
-        }
-        <div ref={loadMoreRef} />
-        <footer className='font-sm mt-24 mb-16 text-neutral-500'>
-          Data provided by Marvel © {new Date().toLocaleDateString('en', { year: 'numeric' })} Marvel
-        </footer>
-       </div>
-    </>
+      {superheroesStatus === 'rejected'
+        ? <StyledError>Seems that is a problem with your api key</StyledError>
+        : <SuperheroesList loading={superheroesStatus === 'loading' || superheroesStatus === 'idle'}/>
+      }
+      <div ref={loadMoreRef} />
+      <StyledFooter>
+        Data provided by Marvel © {new Date().toLocaleDateString('en', { year: 'numeric' })} Marvel
+      </StyledFooter>
+    </StyledSuperheroView>
   )
 }
 

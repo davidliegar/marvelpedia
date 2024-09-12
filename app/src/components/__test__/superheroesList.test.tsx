@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import SuperheroesList from '../SuperheroesList';
+import SuperheroesList from '../superheroesList';
 import { describe, it, expect, vi, type Mock } from 'vitest';
 import { useAppSelector } from '@/app/reduxHooks';
 

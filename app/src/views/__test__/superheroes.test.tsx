@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import SuperheroesView from '../SuperheroesView';
+import SuperheroesView from '../superheroesView';
 import { describe, it, expect, vi, type Mock } from 'vitest';
 import { useAppDispatch, useAppSelector } from '@/app/reduxHooks';
 import { superheroes } from '@marvelpedia/core';

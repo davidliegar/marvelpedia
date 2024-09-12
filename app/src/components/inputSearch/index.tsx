@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { KeyboardEvent, useState } from 'react';
+import { StyledInput, StyledButton, StyledWrapper } from './styles';
 
 // Define types for the props
 interface InputSearchProps {
@@ -22,26 +23,24 @@ function InputSearch({ placeholder, onSearch, className, disabled }: InputSearch
   }
 
   return (
-    <div className={`${className} flex items-center`}>
-      <input
+    <StyledWrapper className={`${className}`}>
+      <StyledInput
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={disabled}
-        className="border border-gray-300 rounded-l px-4 py-2 h-10 focus:outline-none w-full disabled:pointer-events-none"
         placeholder={placeholder}
       />
 
-      <button
+      <StyledButton
         onClick={handleSearch}
         data-testid="search-cta"
         disabled={disabled}
-        className="bg-red-500 text-white p-2 h-10 rounded-r hover:bg-red-600 focus:outline-none disabled:opacity-75 disabled:pointer-events-none"
       >
-        <Icon icon="ic:outline-search" className="w-5 h-5"/>
-      </button>
-    </div>
+        <Icon icon="ic:outline-search"/>
+      </StyledButton>
+    </StyledWrapper>
   );
 };
 

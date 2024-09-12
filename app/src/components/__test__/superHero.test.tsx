@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Superhero from '../Superhero';
+import Superhero from '../superhero';
 import { describe, it, expect } from 'vitest';
 
 // Mock superhero data

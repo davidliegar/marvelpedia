@@ -6,7 +6,7 @@ import { store } from '@marvelpedia/core'
 import { RouterProvider } from 'react-router-dom'
 import router from './app/router.tsx'
 
-import './index.css'
+import './styles/index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

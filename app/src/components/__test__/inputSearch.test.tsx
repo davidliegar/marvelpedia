@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import InputSearch from '../InputSearch';
+import InputSearch from '../inputSearch';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('InputSearch component', () => {
