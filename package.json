@@ -16,7 +16,8 @@
     "lint:ts": "npm run lint:ts --workspaces --if-present",
     "lint": "npm run lint:ts",
     "test:unit": "npm run test:unit --workspaces --if-present",
-    "test:e2e": "npm run test:e2e --workspaces --if-present"
+    "test:e2e": "npm run test:e2e --workspaces --if-present",
+    "test:e2e:ui": "playwright test --ui --w app"
   },
   "devDependencies": {
     "@eslint/js": "9.9.0",
