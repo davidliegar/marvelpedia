@@ -21,7 +21,3 @@ export const env: EnvironmentVariables = cleanEnv(variables, {
   }),
   API_KEY: str()
 }) as EnvironmentVariables
-
-if (env.DEV_MODE) {
-  console.log('%cDEV MODE', 'font-size: 16px; color: red', '')
-}

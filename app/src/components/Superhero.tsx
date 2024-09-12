@@ -15,7 +15,7 @@ function Superhero({ hero }: SuperheroProps) {
         <p className="text-neutral-600 max-h-28 line-clamp-4">{ hero.description }</p>
       </div>
 
-      <Button className="place-self-end m-4" to={hero.externalLink}>
+      <Button data-testid="read-more-cta" className="place-self-end m-4" to={hero.externalLink}>
         <div className="flex items-center gap-2">
           Read more
           <Icon icon="mdi:arrow-right" />

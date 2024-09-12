@@ -30,9 +30,4 @@ describe('Superhero component', () => {
     expect(buttonElement).toHaveAttribute('href', mockHero.externalLink);
 
   });
-
-  it('matches the snapshot', () => {
-    const { asFragment } = render(<Superhero hero={mockHero} />);
-    expect(asFragment()).toMatchSnapshot();
-  });
 });

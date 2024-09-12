@@ -33,6 +33,7 @@ function InputSearch({ placeholder, onSearch, className }: InputSearchProps & { 
 
       <button
         onClick={handleSearch}
+        data-testid="search-cta"
         className="bg-red-500 text-white p-2 h-10 rounded-r hover:bg-red-600 focus:outline-none"
       >
         <Icon icon="ic:outline-search" className="w-5 h-5"/>
