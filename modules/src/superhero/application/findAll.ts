@@ -1,5 +1,5 @@
 import { Pagination, validatePagination } from '../../shared/pagination/domain/pagination'
-import { SuperheroFilters, validateSuperheroFilters } from '../domain/superhero-filters'
+import { SuperheroFilters, validateSuperheroFilters } from '../domain/superheroFilters'
 import { superheroRepository } from '../infrastructure'
 
 export interface findAllSuperheroInput {

@@ -10,6 +10,9 @@
     "David Liébana"
   ],
   "description": "marvelpedia core has all the business logic and information that can be used along the apps",
+  "scripts": {
+    "test": "vitest"
+  },
   "dependencies": {
     "axios": "1.7.7",
     "@reduxjs/toolkit": "2.2.7"

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createEntityAdapter, createSlice, EntityState, PayloadAction } from "@reduxjs/toolkit"
-import { findAll } from '../application/find-all'
+import { findAll } from '../application/findAll'
 import { Superhero, SuperheroFilters } from "../domain"
 import { AppDispatch, RootState } from "../.."
 import { Pagination } from "../../shared/pagination/domain"

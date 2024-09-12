@@ -1,6 +1,6 @@
-import type { SuperheroRepository } from '../domain/superhero-repository';
+import type { SuperheroRepository } from '../domain/superheroRepository';
 import { Pagination } from '../../shared/pagination/domain/pagination'
-import { SuperheroFilters } from '../domain/superhero-filters'
+import { SuperheroFilters } from '../domain/superheroFilters'
 
 const mockHeroes = Array.from({ length: 10 }).map((_, index) => {
   return  {

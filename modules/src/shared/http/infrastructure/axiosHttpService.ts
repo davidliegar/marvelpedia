@@ -1,7 +1,7 @@
 import axios, { type AxiosRequestConfig } from 'axios'
-import { type HttpResponse, type HttpService } from '../domain/http-service'
-import { NotFoundError } from '../domain/not-found-error'
-import { ForbiddenError } from '../domain/forbidden-error'
+import { type HttpResponse, type HttpService } from '../domain/httpService'
+import { NotFoundError } from '../domain/notFoundError'
+import { ForbiddenError } from '../domain/forbiddenError'
 
 const HTTP_STATUS_FORBIDDEN = 403
 const HTTP_STATUS_NOT_FOUND = 404

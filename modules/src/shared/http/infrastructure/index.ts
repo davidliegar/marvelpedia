@@ -1,5 +1,5 @@
-import { HttpService } from "../domain/http-service";
-import { axiosHttpServiceBuilder } from "./axios-http-service";
+import { HttpService } from "../domain/httpService";
+import { axiosHttpServiceBuilder } from "./axiosHttpService";
 
 export const httpService: HttpService = (() => {
   return axiosHttpServiceBuilder()

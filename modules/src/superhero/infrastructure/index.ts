@@ -1,7 +1,7 @@
 import { env } from '@marvelpedia/config'
-import { SuperheroRepository } from '../domain/superhero-repository'
-import { fakeSuperheroRepositoryBuilder } from './fake-api'
-import { marvelSuperheroRepositoryBuilder } from './marvel-api'
+import { SuperheroRepository } from '../domain/superheroRepository'
+import { fakeSuperheroRepositoryBuilder } from './fakeApi'
+import { marvelSuperheroRepositoryBuilder } from './marvelApi'
 
 import { httpService } from '../../shared/http/infrastructure'
 import { authService } from '../../shared/auth/infrastructure'

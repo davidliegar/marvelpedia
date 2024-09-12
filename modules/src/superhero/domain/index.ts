@@ -1,2 +1,2 @@
 export * from './superhero'
-export * from './superhero-filters'
+export * from './superheroFilters'

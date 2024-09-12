@@ -1,10 +1,10 @@
 import { env } from '@marvelpedia/config'
-import type { SuperheroRepository } from '../domain/superhero-repository';
-import { type AuthService } from '../../shared/auth/domain/auth-service'
-import { type HttpService } from '../../shared/http/domain/http-service'
+import type { SuperheroRepository } from '../domain/superheroRepository';
+import { type AuthService } from '../../shared/auth/domain/authService'
+import { type HttpService } from '../../shared/http/domain/httpService'
 import { MarvelGetAll } from './dto';
 import { Pagination } from '../../shared/pagination/domain/pagination'
-import { SuperheroFilters } from '../domain/superhero-filters'
+import { SuperheroFilters } from '../domain/superheroFilters'
 
 export function marvelSuperheroRepositoryBuilder({
   httpService,

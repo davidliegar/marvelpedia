@@ -1,5 +1,5 @@
-import { AuthService } from "../domain/auth-service";
-import { marvelAuthServiceBuilder } from "./marvel-auth-service";
+import { AuthService } from "../domain/authService";
+import { marvelAuthServiceBuilder } from "./marvelAuthService";
 
 export const authService: AuthService = (() => {
   return marvelAuthServiceBuilder()

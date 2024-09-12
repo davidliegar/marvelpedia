@@ -1,6 +1,6 @@
 import { env } from '@marvelpedia/config'
 
-import { type AuthService } from '../domain/auth-service'
+import { type AuthService } from '../domain/authService'
 
 export function marvelAuthServiceBuilder () : AuthService {
   return {
