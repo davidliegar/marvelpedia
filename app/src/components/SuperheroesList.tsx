@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/app/reduxHooks"
 import LoadingHero from "@/components/LoadingHero"
-import Superhero from "@/components/SuperHero"
+import Superhero from "@/components/Superhero"
 import { superheroes } from "@marvelpedia/core"
 import noResultsImg from '@/assets/deadpool-ops.png';
 
