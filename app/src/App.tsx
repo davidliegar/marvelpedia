@@ -2,7 +2,7 @@ import { SuperheroesList } from '@/views/SuperheroesList.tsx'
 import InputSearch from './components/InputSearch'
 
 import { useAppDispatch, useAppSelector } from '@/app/reduxHooks'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useInfiniteScroll from '@/app/useInfiniteScroll'
 import { superheroes } from '@marvelpedia/core'
 
@@ -10,26 +10,30 @@ function App() {
   const dispatch = useAppDispatch()
 
   const superheroesStatus = useAppSelector(superheroes.selectStatus)
-  const metaSelector = useAppSelector(superheroes.selectMeta)
+  const { loadMoreRef, hasIntersect, setHasIntersect } = useInfiniteScroll()
+  const [isEnabled, setIsEnabled ] = useState(true)
 
-  const { loadMoreRef, hasIntersect } = useInfiniteScroll()
+  async function onSearch(query: string) {
+    setIsEnabled(false)
+    dispatch(superheroes.setFilter(query))
+    await dispatch(superheroes.fetchAll()).unwrap()
+    setHasIntersect(false)
+    setIsEnabled(true)
+  }
 
   useEffect(() => {
-    if (hasIntersect) {
-      console.log('increment')
+    console.log({hasIntersect, isEnabled })
+    if (hasIntersect && isEnabled) {
+      console.log('hasIntersect', hasIntersect)
       dispatch(superheroes.incrementPage())
     } 
-  }, [hasIntersect, dispatch])
-
-  function onSearch(query: string) {
-    dispatch(superheroes.setFilter(query))
-  }
+  }, [hasIntersect, dispatch, isEnabled])
 
   useEffect(() => {
     if (superheroesStatus === 'requesting') {
       dispatch(superheroes.fetchAll())
     }
-  }, [superheroesStatus, dispatch, metaSelector])
+  }, [superheroesStatus, dispatch])
 
   return (
     <>

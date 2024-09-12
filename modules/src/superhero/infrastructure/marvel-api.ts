@@ -43,7 +43,8 @@ export function marvelSuperheroRepositoryBuilder({
         meta: {
           page: pagination.page,
           pageSize: pagination.pageSize,
-          total: superheroes.data.total
+          total: superheroes.data.total,
+          count: superheroes.data.count
         }
       }
     },

@@ -63,7 +63,7 @@ const superHeroesSlice = createSlice({
       superheroesAdapter.removeAll(state)
       state.pagination.page = 1
       state.filters.name = action.payload
-      state.status = 'requesting'
+       state.status = 'idle'
     }
   },
   extraReducers: builder => {
@@ -73,10 +73,9 @@ const superHeroesSlice = createSlice({
       })
       .addCase(fetchAll.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.meta = {
-          total: action.payload.meta.total,
-          count: action.payload.data.length
-        }
+        state.meta.total = action.payload.meta.total
+        state.meta.count = action.payload.meta.count
+
         superheroesAdapter.addMany(state, action.payload.data)
       })
       .addCase(fetchAll.rejected, (state, action) => {

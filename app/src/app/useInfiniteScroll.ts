@@ -29,15 +29,7 @@ function useInfiniteScroll() {
     };
   }, [loadMoreRef, intersectionCallback]);
 
-  const resume = useCallback(() => {
-    setHasIntersect(false)
-  }, [])
-
-  const stop = useCallback(() => {
-    setHasIntersect(true)
-  }, [])
-
-  return { loadMoreRef, hasIntersect, resume, stop };
+  return { loadMoreRef, hasIntersect, setHasIntersect };
 }
 
 export default useInfiniteScroll;

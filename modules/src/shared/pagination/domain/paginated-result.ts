@@ -6,5 +6,6 @@ export interface PaginatedResult<T> {
     page: number
     pageSize: PageSize
     total: number
+    count: number
   }
 }
