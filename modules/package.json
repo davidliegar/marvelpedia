@@ -11,6 +11,7 @@
   ],
   "description": "marvelpedia core has all the business logic and information that can be used along the apps",
   "scripts": {
+    "lint:ts": "eslint . --fix --ignore-pattern .gitignore",
     "test:unit": "vitest run --coverage"
   },
   "dependencies": {
