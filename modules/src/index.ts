@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import superheroeReducer, {
+import superheroReducer, {
   fetchAll,
   incrementPage,
   setFilter,
@@ -11,7 +11,7 @@ export * from './superhero/domain/superhero'
 
 export const store = configureStore({
   reducer: {
-    superheroes: superheroeReducer
+    superheroes: superheroReducer
   }
 })
 

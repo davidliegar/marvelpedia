@@ -55,15 +55,19 @@ const superHeroesSlice = createSlice({
   initialState,
   reducers: {
     incrementPage(state) {
-      state.pagination.page += 1
-      state.status = 'requesting'
+      if (state.status !== 'loading') {
+        state.pagination.page += 1
+        state.status = 'requesting'
+      }
     },
 
     setFilter(state, action: PayloadAction<string>) {
-      superheroesAdapter.removeAll(state)
-      state.pagination.page = 1
-      state.filters.name = action.payload
-      state.status = 'filtering'
+      if (state.status !== 'loading') {
+        superheroesAdapter.removeAll(state)
+        state.pagination.page = 1
+        state.filters.name = action.payload
+        state.status = 'filtering'
+      }
     }
   },
   extraReducers: builder => {

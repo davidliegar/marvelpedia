@@ -44,10 +44,18 @@ function SuperheroesView() {
       <div className='w-11/12 max-w-screen-lg mx-auto'>
         <header className='sticky top-0 bg-gray-200 py-4 lg:mt-20'>
           <h2 className='text-neutral-700 font-bold text-4xl mb-8'>Search your character</h2>
-          <InputSearch className="w-full sm:w-2/3 lg:w-1/2" placeholder='Name of Character' onSearch={onSearch} />
+          <InputSearch
+            className="w-full sm:w-2/3 lg:w-1/2"
+            placeholder='Name of Character'
+            onSearch={onSearch}
+            disabled={superheroesStatus === 'loading'}
+          />
         </header>
 
-        <SuperheroesList loading={superheroesStatus === 'loading' || superheroesStatus === 'idle'}/>
+        {superheroesStatus === 'rejected'
+          ? <p className="p-3 bg-red-700 text-white">Seems that is a problem with your api key</p>
+          : <SuperheroesList loading={superheroesStatus === 'loading' || superheroesStatus === 'idle'}/>
+        }
         <div ref={loadMoreRef} />
         <footer className='font-sm mt-24 mb-16 text-neutral-500'>
           Data provided by Marvel © {new Date().toLocaleDateString('en', { year: 'numeric' })} Marvel
