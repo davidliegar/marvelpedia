@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 
 // Define types for the props
 interface InputSearchProps {
@@ -14,12 +14,19 @@ function InputSearch({ placeholder, onSearch, className }: InputSearchProps & { 
     onSearch(searchTerm);
   };
 
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onSearch(searchTerm);
+    }
+  }
+
   return (
     <div className={`${className} flex items-center`}>
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyDown}
         className="border border-gray-300 rounded-l px-4 py-2 h-10 focus:outline-none w-full"
         placeholder={placeholder}
       />
