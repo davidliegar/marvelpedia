@@ -8,7 +8,6 @@ export interface findAllSuperheroInput {
 }
 
 export function findAll({ filters, pagination }: findAllSuperheroInput) {
-  console.log({ filters, pagination })
   const filtersValidated = validateSuperheroFilters(filters)
   const paginationValidated = validatePagination(pagination)
 

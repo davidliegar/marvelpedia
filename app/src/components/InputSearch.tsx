@@ -7,7 +7,7 @@ interface InputSearchProps {
   onSearch: (query: string) => void;
 }
 
-function InputSearch({ placeholder, onSearch, className }: InputSearchProps & { className: string }) {
+function InputSearch({ placeholder, onSearch, className }: InputSearchProps & { className?: string }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = () => {

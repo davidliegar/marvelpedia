@@ -42,9 +42,11 @@ function App() {
 
   return (
     <>
-      <div className='max-w-screen-lg mx-auto'>
-        <h2 className='text-neutral-700 font-bold text-4xl mt-24 mb-8'>Search your character</h2>
-        <InputSearch className="mb-4" placeholder='Name of Character' onSearch={onSearch} />
+      <div className='w-11/12 max-w-screen-lg mx-auto'>
+        <header className='sticky top-0 bg-gray-200 py-4 lg:mt-20'>
+          <h2 className='text-neutral-700 font-bold text-4xl mb-8'>Search your character</h2>
+          <InputSearch placeholder='Name of Character' onSearch={onSearch} />
+        </header>
 
         <SuperheroesList loading={superheroesStatus === 'loading'}/>
         <div ref={loadMoreRef} />
