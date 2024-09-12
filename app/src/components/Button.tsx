@@ -1,18 +1,26 @@
 import type { ReactNode } from 'react';
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
+  to?: string
   children: ReactNode;
 }
 
-function Button({ onClick, children, className }: ButtonProps & { className: string }) {
+function Button({ onClick, children, className, to }: ButtonProps & { className: string }) {
+  const classes = `${className} bg-stone-700 hover:bg-stone-900 text-white py-2 px-4 rounded`
+  const isButton = <button
+    className={classes}
+    onClick={onClick}
+  >
+    {children}
+  </button>
+
+  const isLink = <a className={classes} href={to} target='_blank' rel="noopener noreferrer">
+    {children}
+  </a>
+  
   return (
-    <button
-      className={`${className} bg-stone-700 hover:bg-stone-900 text-white py-2 px-4 rounded`}
-      onClick={onClick}
-    >
-      {children}
-    </button>
+    to ? isLink : isButton
   )
 }
 

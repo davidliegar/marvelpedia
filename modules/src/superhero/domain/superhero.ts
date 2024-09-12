@@ -3,4 +3,5 @@ export interface Superhero {
   name: string
   description: string
   img: string
+  externalLink?: string
 }

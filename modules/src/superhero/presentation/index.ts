@@ -10,7 +10,7 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 }>()
 
 interface SuperheroState extends EntityState<Superhero, string> {
-  status: 'idle' | 'requesting' | 'loading' | 'succeeded' | 'rejected'
+  status: 'idle' | 'requesting' | 'filtering' |'loading' | 'succeeded' | 'rejected'
   pagination: Pagination
   meta: {
     count: number,
@@ -29,7 +29,7 @@ const initialState: SuperheroState = superheroesAdapter.getInitialState({
     pageSize: 25
   },
   meta: {
-    count: 0,
+    count: -1,
     total: 0
   },
   filters: {},
@@ -44,7 +44,7 @@ export const fetchAll = createAppAsyncThunk('superHeroes/fetchAll', async (_, th
 },{
   condition(_, thunkApi) {
     const status = selectStatus(thunkApi.getState())
-    if (status !== 'idle' && status !== 'requesting') {
+    if (['loading', 'succeeded', 'rejected'].includes(status)) {
       return false
     }
   }
@@ -63,7 +63,7 @@ const superHeroesSlice = createSlice({
       superheroesAdapter.removeAll(state)
       state.pagination.page = 1
       state.filters.name = action.payload
-       state.status = 'idle'
+      state.status = 'filtering'
     }
   },
   extraReducers: builder => {

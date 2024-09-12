@@ -35,7 +35,8 @@ export function marvelSuperheroRepositoryBuilder({
         id: hero.id.toString(),
         name: hero.name,
         description: hero.description || '(No description available)',
-        img: `${hero.thumbnail.path}/portrait_xlarge.${hero.thumbnail.extension}`
+        img: `${hero.thumbnail.path}/portrait_xlarge.${hero.thumbnail.extension}`,
+        externalLink: hero.urls.find(item => item.type === 'detail')?.url
       }))
 
       return {

@@ -5,7 +5,11 @@ interface Hero {
   thumbnail: {
     extension: string
     path: string
-  }
+  },
+  urls: Array<{
+    type: 'detail' | 'wiki' | 'comic',
+    url: string
+  }>
 }
 
 export interface MarvelGetAll {
