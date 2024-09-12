@@ -47,7 +47,7 @@ function SuperheroesView() {
           <InputSearch className="w-full sm:w-2/3 lg:w-1/2" placeholder='Name of Character' onSearch={onSearch} />
         </header>
 
-        <SuperheroesList loading={superheroesStatus === 'loading'}/>
+        <SuperheroesList loading={superheroesStatus === 'loading' || superheroesStatus === 'idle'}/>
         <div ref={loadMoreRef} />
         <footer className='font-sm mt-24 mb-16 text-neutral-500'>
           Data provided by Marvel © {new Date().toLocaleDateString('en', { year: 'numeric' })} Marvel

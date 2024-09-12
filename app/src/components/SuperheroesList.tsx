@@ -7,6 +7,8 @@ import noResultsImg from '@/assets/deadpool-ops.png';
 const SuperheroesList = ({ loading = false }) => {
   const superheroesSelector = useAppSelector(superheroes.selectAll)
 
+  const hasContent = superheroesSelector.length > 0 || loading
+
   const renderedHeroes = superheroesSelector.map(superheroe => (
     <Superhero hero={superheroe} key={superheroe.id} />
   ))
@@ -26,10 +28,8 @@ const SuperheroesList = ({ loading = false }) => {
     <p className="text-center">Ops, we couldn't find your superhero, try with another name</p>
   </div>
 
-  const isEmpty = superheroesSelector.length === 0
-
   return (
-   isEmpty ? empty : list
+    hasContent ? list : empty
   )
 }
 
