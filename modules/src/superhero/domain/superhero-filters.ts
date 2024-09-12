@@ -4,9 +4,9 @@ export interface SuperheroFilters {
 
 export function validateSuperheroFilters (payload: SuperheroFilters | undefined): SuperheroFilters {
  
-  if (!payload) return {}
+  if (!payload || !payload.name) return {}
 
-  if (payload.name !== 'string') {
+  if (typeof payload.name !== 'string') {
     throw new Error ('name should be a string')
   }
 

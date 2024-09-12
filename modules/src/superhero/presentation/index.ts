@@ -10,8 +10,13 @@ export const createAppAsyncThunk = createAsyncThunk.withTypes<{
 }>()
 
 interface SuperheroState extends EntityState<Superhero, string> {
-  status: 'idle' | 'pending' | 'succeeded' | 'rejected'
+  status: 'idle' | 'requesting' | 'loading' | 'succeeded' | 'rejected'
   pagination: Pagination
+  meta: {
+    count: number,
+    total: number
+  }
+  filters: SuperheroFilters
   error: string | null
 }
 
@@ -20,23 +25,26 @@ const superheroesAdapter = createEntityAdapter<Superhero>()
 const initialState: SuperheroState = superheroesAdapter.getInitialState({
   status: 'idle',
   pagination: {
-    page: 1,
+    page: 0,
     pageSize: 25
   },
+  meta: {
+    count: 0,
+    total: 0
+  },
+  filters: {},
   error: null
 })
 
-export const fetchAll = createAppAsyncThunk('superHeroes/fetchAll', async (payload: {
-  filters?: SuperheroFilters
-}, thunkApi) => {
+export const fetchAll = createAppAsyncThunk('superHeroes/fetchAll', async (_, thunkApi) => {
   return await findAll({
-    filters: payload.filters,
+    filters: selectFilters(thunkApi.getState()),
     pagination: selectPagination(thunkApi.getState())
   })
 },{
   condition(_, thunkApi) {
     const status = selectStatus(thunkApi.getState())
-    if (status !== 'idle') {
+    if (status !== 'idle' && status !== 'requesting') {
       return false
     }
   }
@@ -47,18 +55,28 @@ const superHeroesSlice = createSlice({
   initialState,
   reducers: {
     incrementPage(state) {
-      console.log('increment')
       state.pagination.page += 1
-      state.status = 'idle'
+      state.status = 'requesting'
+    },
+
+    setFilter(state, action: PayloadAction<string>) {
+      superheroesAdapter.removeAll(state)
+      state.pagination.page = 1
+      state.filters.name = action.payload
+      state.status = 'requesting'
     }
   },
   extraReducers: builder => {
     builder
       .addCase(fetchAll.pending, (state) => {
-        state.status = 'pending'
+        state.status = 'loading'
       })
       .addCase(fetchAll.fulfilled, (state, action) => {
         state.status = 'succeeded'
+        state.meta = {
+          total: action.payload.meta.total,
+          count: action.payload.data.length
+        }
         superheroesAdapter.addMany(state, action.payload.data)
       })
       .addCase(fetchAll.rejected, (state, action) => {
@@ -70,10 +88,12 @@ const superHeroesSlice = createSlice({
 
 export default superHeroesSlice.reducer
 
-export const { incrementPage } = superHeroesSlice.actions
+export const { incrementPage, setFilter } = superHeroesSlice.actions
 
 export const selectStatus = (state: RootState) => state.superheroes.status
+export const selectMeta = (state: RootState) => state.superheroes.meta
 export const selectPagination = (state: RootState) => state.superheroes.pagination
+export const selectFilters = (state: RootState) => state.superheroes.filters
 export const selectError = (state: RootState) => state.superheroes.error
 
 export const {

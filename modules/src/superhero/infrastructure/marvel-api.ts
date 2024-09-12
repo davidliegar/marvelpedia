@@ -19,6 +19,7 @@ export function marvelSuperheroRepositoryBuilder({
       pagination: Pagination
     ) {
       const token = await authService.getToken()
+
       const params = {
         apikey: token,
         ...filters,
