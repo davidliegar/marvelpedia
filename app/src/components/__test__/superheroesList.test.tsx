@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import SuperheroesList from '../superheroesList';
-import { describe, it, expect, vi, type Mock } from 'vitest';
+import { type Mock, describe, expect, it, vi } from 'vitest';
 import { useAppSelector } from '@/app/reduxHooks';
 
 vi.mock('@/app/reduxHooks', () => ({
@@ -48,8 +48,8 @@ describe('SuperheroesList component', () => {
     render(<SuperheroesList loading={false} />);
 
     // Ensure the empty state message and image are rendered
-    const emptyMessage = screen.getByText(/we couldn't find your superhero/i);
-    const emptyImage = screen.getByAltText('no result');
+    const emptyMessage = screen.getByText(/we couldn't find your superhero/i),
+     emptyImage = screen.getByAltText('no result');
 
     expect(emptyMessage).toBeInTheDocument();
     expect(emptyImage).toBeInTheDocument();

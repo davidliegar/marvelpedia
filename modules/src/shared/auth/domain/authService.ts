@@ -1,4 +1,4 @@
 
-export type AuthService = {
+export interface AuthService {
   getToken(): Promise<string | undefined>
 }

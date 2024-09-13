@@ -8,10 +8,14 @@ import router from './app/router.tsx'
 
 import './styles/index.css'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}/> 
-    </Provider>
-  </StrictMode>,
-)
+const root = document.getElementById('root')
+
+if (root) {
+  createRoot(root).render(
+    <StrictMode>
+      <Provider store={store}>
+        <RouterProvider router={router}/> 
+      </Provider>
+    </StrictMode>,
+  )  
+}

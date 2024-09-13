@@ -3,8 +3,8 @@ import { type HttpResponse, type HttpService } from '../domain/httpService'
 import { NotFoundError } from '../domain/notFoundError'
 import { ForbiddenError } from '../domain/forbiddenError'
 
-const HTTP_STATUS_FORBIDDEN = 403
-const HTTP_STATUS_NOT_FOUND = 404
+const HTTP_STATUS_FORBIDDEN = 403,
+ HTTP_STATUS_NOT_FOUND = 404
 
 function errorHandle (error: { response: { status: string | undefined | number}}) {
   if (error.response?.status === HTTP_STATUS_NOT_FOUND) {

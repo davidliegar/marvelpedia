@@ -9,8 +9,8 @@ export interface findAllSuperheroInput {
 }
 
 export function findAll({ filters, pagination }: findAllSuperheroInput) {
-  const filtersValidated = validateSuperheroFilters(filters)
-  const paginationValidated = validatePagination(pagination)
+  const filtersValidated = validateSuperheroFilters(filters),
+   paginationValidated = validatePagination(pagination)
 
   if (filtersValidated.name) {
     analyticsService.track({

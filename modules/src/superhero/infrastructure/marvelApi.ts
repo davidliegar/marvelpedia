@@ -18,20 +18,20 @@ export function marvelSuperheroRepositoryBuilder({
       filters: SuperheroFilters,
       pagination: Pagination
     ) {
-      const token = await authService.getToken()
+      const token = await authService.getToken(),
 
-      const params = {
+       params = {
         apikey: token,
         ...filters,
         limit: pagination.pageSize,
         offset: (pagination.page - 1) * pagination.pageSize
-      }
+      },
 
-      const superheroes = await httpService.get<MarvelGetAll>(`${env.API_URL}/v1/public/characters`, undefined, {
+       superheroes = await httpService.get<MarvelGetAll>(`${env.API_URL}/v1/public/characters`, undefined, {
         params
-      })
+      }),
         
-      const results = superheroes.data.results.map(hero => ({
+       results = superheroes.data.results.map(hero => ({
         id: hero.id.toString(),
         name: hero.name,
         description: hero.description || '(No description available)',

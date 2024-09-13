@@ -2,8 +2,8 @@ import styled, { css, keyframes, } from 'styled-components';
 
 const pulse = keyframes`
  50% { opacity: 0.5; }
-`
-const animation = css`
+`,
+ animation = css`
   animation: ${pulse} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 `
 

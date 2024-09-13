@@ -1,4 +1,4 @@
-import { Pagination, PaginatedResult } from "../../shared/pagination/domain";
+import { PaginatedResult, Pagination } from "../../shared/pagination/domain";
 import type { Superhero } from "./superhero";
 import { SuperheroFilters } from "./superheroFilters";
 

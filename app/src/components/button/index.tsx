@@ -15,9 +15,9 @@ function Button({ onClick, children, className, to, "data-testid": dataTestId }:
     onClick={onClick}
   >
     {children}
-  </StyledButton>
+  </StyledButton>,
 
-  const isLink = <StyledLink data-testid={dataTestId} className={className} href={to} target='_blank' rel="noopener noreferrer">
+   isLink = <StyledLink data-testid={dataTestId} className={className} href={to} target='_blank' rel="noopener noreferrer">
     {children}
   </StyledLink>
   

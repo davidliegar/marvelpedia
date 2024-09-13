@@ -1,13 +1,13 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import InputSearch from '../inputSearch';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 describe('InputSearch component', () => {
   it('renders the input and button', () => {
     render(<InputSearch placeholder="Search..." onSearch={() => {}} />);
 
-    const inputElement = screen.getByPlaceholderText('Search...');
-    const buttonElement = screen.getByRole('button');
+    const inputElement = screen.getByPlaceholderText('Search...'),
+     buttonElement = screen.getByRole('button');
 
     expect(inputElement).toBeInTheDocument();
     expect(buttonElement).toBeInTheDocument();
@@ -26,8 +26,8 @@ describe('InputSearch component', () => {
     const handleSearch = vi.fn();
     render(<InputSearch placeholder="Search..." onSearch={handleSearch} />);
 
-    const inputElement = screen.getByPlaceholderText('Search...');
-    const buttonElement = screen.getByRole('button');
+    const inputElement = screen.getByPlaceholderText('Search...'),
+     buttonElement = screen.getByRole('button');
 
     fireEvent.change(inputElement, { target: { value: 'test query' } });
     fireEvent.click(buttonElement);

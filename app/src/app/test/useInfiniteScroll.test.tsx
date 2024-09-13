@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
 import useInfiniteScroll from '../useInfiniteScroll';
 
 describe('useInfiniteScroll Hook', () => {
@@ -27,8 +27,8 @@ describe('useInfiniteScroll Hook', () => {
     const { result } = renderHook(() => useInfiniteScroll());
 
     act(() => {
-      const observer = global.IntersectionObserver;
-      const mockObserver = new observer((entries) => {
+      const observer = global.IntersectionObserver,
+       mockObserver = new observer((entries) => {
         const [entry] = entries;
         result.current.setHasIntersect(entry.isIntersecting);
       });
@@ -44,8 +44,8 @@ describe('useInfiniteScroll Hook', () => {
     const { result } = renderHook(() => useInfiniteScroll());
 
     act(() => {
-      const observer = global.IntersectionObserver;
-      const mockObserver = new observer((entries) => {
+      const observer = global.IntersectionObserver,
+       mockObserver = new observer((entries) => {
         const [entry] = entries;
         result.current.setHasIntersect(entry.isIntersecting);
       });

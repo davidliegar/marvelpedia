@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Superhero from '../superhero';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 // Mock superhero data
 const mockHero = {
@@ -15,10 +15,10 @@ describe('Superhero component', () => {
   it('renders the hero image, name, and description', () => {
     render(<Superhero hero={mockHero} />);
 
-    const imgElement = screen.getByAltText('Spider-Man');
-    const nameElement = screen.getByText('Spider-Man');
-    const descriptionElement = screen.getByText(/description/i);
-    const buttonElement = screen.getByRole('link', { name: /read more/i });
+    const imgElement = screen.getByAltText('Spider-Man'),
+     nameElement = screen.getByText('Spider-Man'),
+     descriptionElement = screen.getByText(/description/i),
+     buttonElement = screen.getByRole('link', { name: /read more/i });
 
     expect(imgElement).toBeInTheDocument();
     expect(imgElement).toHaveAttribute('src', mockHero.img);

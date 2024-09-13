@@ -9,10 +9,10 @@ import { authService } from '../../shared/auth/infrastructure'
 export const superheroRepository: SuperheroRepository = (() => {
   if (env.DEV_MODE) {
     return fakeSuperheroRepositoryBuilder()
-  } else {
+  } 
     return marvelSuperheroRepositoryBuilder({
       httpService,
       authService,
     })
-  }
+  
 })()

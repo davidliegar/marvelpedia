@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { KeyboardEvent, useState } from 'react';
-import { StyledInput, StyledButton, StyledWrapper } from './styles';
+import { StyledButton, StyledInput, StyledWrapper } from './styles';
 
 // Define types for the props
 interface InputSearchProps {
@@ -10,13 +10,13 @@ interface InputSearchProps {
 }
 
 function InputSearch({ placeholder, onSearch, className, disabled }: InputSearchProps & { className?: string }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(''),
 
-  const handleSearch = () => {
+   handleSearch = () => {
     onSearch(searchTerm);
-  };
+  },
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+   handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
       onSearch(searchTerm);
     }

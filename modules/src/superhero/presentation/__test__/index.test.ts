@@ -1,14 +1,14 @@
-import { beforeEach, describe, it, expect, vi, Mock } from 'vitest';
+import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
 import { configureStore } from '@reduxjs/toolkit';
 import superHeroesReducer, {
   fetchAll,
   incrementPage,
-  setFilter,
-  selectStatus,
+  selectError,
+  selectFilters,
   selectMeta,
   selectPagination,
-  selectFilters,
-  selectError
+  selectStatus,
+  setFilter
 } from '../';
 import { findAll } from '../../application/findAll';
 

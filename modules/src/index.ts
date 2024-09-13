@@ -2,10 +2,10 @@ import { configureStore } from '@reduxjs/toolkit'
 import superheroReducer, {
   fetchAll,
   incrementPage,
-  setFilter,
   selectAll,
+  selectMeta,
   selectStatus,
-  selectMeta
+  setFilter
 } from './superhero/presentation'
 export * from './superhero/domain/superhero'
 

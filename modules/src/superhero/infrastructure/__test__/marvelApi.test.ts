@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { marvelSuperheroRepositoryBuilder } from '../marvelApi';
 import { HttpService } from '../../../shared/http/domain/httpService';
 import { Pagination } from '../../../shared/pagination/domain/pagination';
@@ -18,8 +18,8 @@ vi.mock('../../shared/http/domain/httpService', () => ({
 
 describe('marvelSuperheroRepositoryBuilder', () => {
   it('should call authService.getToken and httpService.get with correct parameters and parse the result correctly', async () => {
-    const mockToken = 'mock-api-key';
-    const mockResponse = {
+    const mockToken = 'mock-api-key',
+     mockResponse = {
       data: {
         results: [
           {
@@ -33,17 +33,17 @@ describe('marvelSuperheroRepositoryBuilder', () => {
         total: 1,
         count: 1
       }
-    };
+    },
 
-    const httpService = { get: vi.fn().mockResolvedValue(mockResponse) } as unknown as HttpService;
-    const authService = { getToken: vi.fn().mockResolvedValue(mockToken) };
+     httpService = { get: vi.fn().mockResolvedValue(mockResponse) } as unknown as HttpService,
+     authService = { getToken: vi.fn().mockResolvedValue(mockToken) },
     
-    const repository = marvelSuperheroRepositoryBuilder({ httpService, authService });
+     repository = marvelSuperheroRepositoryBuilder({ httpService, authService }),
 
-    const filters: SuperheroFilters = { name: 'value' };
-    const pagination: Pagination = { page: 1, pageSize: 10 };
+     filters: SuperheroFilters = { name: 'value' },
+     pagination: Pagination = { page: 1, pageSize: 10 },
 
-    const result = await repository.findAll(filters, pagination);
+     result = await repository.findAll(filters, pagination);
 
     expect(authService.getToken).toHaveBeenCalled();
     expect(httpService.get).toHaveBeenCalledWith(

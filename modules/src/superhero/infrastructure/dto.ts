@@ -6,10 +6,10 @@ interface Hero {
     extension: string
     path: string
   },
-  urls: Array<{
+  urls: {
     type: 'detail' | 'wiki' | 'comic',
     url: string
-  }>
+  }[]
 }
 
 export interface MarvelGetAll {

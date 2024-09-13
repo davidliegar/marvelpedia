@@ -8,12 +8,12 @@ import { superheroes } from '@marvelpedia/core'
 import { StyledError, StyledFooter, StyledHeader, StyledSuperheroView, StyledTitle } from './styles'
 
 function SuperheroesView() {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch(),
 
-  const superheroesStatus = useAppSelector(superheroes.selectStatus)
-  const superheroesMeta = useAppSelector(superheroes.selectMeta)
-  const { loadMoreRef, hasIntersect, setHasIntersect } = useInfiniteScroll()
-  const [isEnabled, setIsEnabled ] = useState(true)
+   superheroesStatus = useAppSelector(superheroes.selectStatus),
+   superheroesMeta = useAppSelector(superheroes.selectMeta),
+   { loadMoreRef, hasIntersect, setHasIntersect } = useInfiniteScroll(),
+   [isEnabled, setIsEnabled ] = useState(true)
 
   async function onSearch(query: string) {
     setIsEnabled(false)

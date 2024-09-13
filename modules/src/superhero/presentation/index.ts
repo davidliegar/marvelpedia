@@ -1,4 +1,4 @@
-import { createAsyncThunk, createEntityAdapter, createSlice, EntityState, PayloadAction } from "@reduxjs/toolkit"
+import { EntityState, PayloadAction, createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit"
 import { findAll } from '../application/findAll'
 import { Superhero, SuperheroFilters } from "../domain"
 import { AppDispatch, RootState } from "../.."
@@ -20,9 +20,9 @@ interface SuperheroState extends EntityState<Superhero, string> {
   error: string | null
 }
 
-const superheroesAdapter = createEntityAdapter<Superhero>()
+const superheroesAdapter = createEntityAdapter<Superhero>(),
 
-const initialState: SuperheroState = superheroesAdapter.getInitialState({
+ initialState: SuperheroState = superheroesAdapter.getInitialState({
   status: 'idle',
   pagination: {
     page: 0,
@@ -36,12 +36,10 @@ const initialState: SuperheroState = superheroesAdapter.getInitialState({
   error: null
 })
 
-export const fetchAll = createAppAsyncThunk('superHeroes/fetchAll', async (_, thunkApi) => {
-  return await findAll({
+export const fetchAll = createAppAsyncThunk('superHeroes/fetchAll', async (_, thunkApi) => await findAll({
     filters: selectFilters(thunkApi.getState()),
     pagination: selectPagination(thunkApi.getState())
-  })
-},{
+  }),{
   condition(_, thunkApi) {
     const status = selectStatus(thunkApi.getState())
     if (['loading', 'succeeded', 'rejected'].includes(status)) {
